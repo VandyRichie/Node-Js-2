@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
         <input type="tel" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"><br>
         <label for="gender">Gender:</label><br>
         <select id="gender">
-          <option value="please select" selected>Options</option>
+          <option value="please select">Options</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select><br><br>
