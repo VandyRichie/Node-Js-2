@@ -4,8 +4,7 @@ const server = http.createServer((req, res) => {
   res.end(`
   <html>
     <body>
-     <form id="UserInfo"> 
-     <form action="/action_page.php" method="post">
+     <form id="UserInfo" action="/submit" method="post">
         <label for="fname">First Name:</label><br>
         <input type="text" id="fname" name="fname" required><br>
         <label for="lname">Last Name:</label><br>
