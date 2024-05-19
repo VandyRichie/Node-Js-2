@@ -35,12 +35,4 @@ app.post('/submit', (req, res) => {
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
-<<<<<<< HEAD
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 2c1d311 (New changes)
-=======
-});
->>>>>>> cfa9a6d (new edit)
