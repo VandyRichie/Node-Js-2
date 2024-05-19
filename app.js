@@ -1,36 +1,38 @@
-const http = require('http');
-const server = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end(`
-  <html>
-    <body>
-     <form id="UserInfo" action="/submit" method="post">
-        <label for="fname">First Name:</label><br>
-        <input type="text" id="fname" name="fname" required><br>
-        <label for="lname">Last Name:</label><br>
-        <input type="text" id="lname" name="lname" required><br>
-        <label for="oname">Other Name:</label><br>
-        <input type="text" id="oname" name="oname"><br>
-        <label for="email">Email Address:</label><br>
-        <input type="email" id="email" name="email"><br>
-        <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"><br>
-        <label for="gender">Gender:</label><br>
-        <select id="gender">
-          <option value="please select">Options</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select><br><br>
-        <input type="submit" value="Submit">
-      </form>
-      <div id= "jsonOutput">
-      </div>
-          <script
-          src="database.json"></script>
-    </body>
-  </html>
-  `);
-});
-server.listen(4000, 'localhost');
-console.log("Please Fill in Details!");
+const express = require('express');
+const bodyParser = require('body-parser');
 
+const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+    res.send(`
+        <form action="/submit" method="post">
+            <label for="firstName">First Name:</label><br>
+            <input type="text" id="firstName" name="firstName"><br>
+            <label for="lastName">Last Name:</label><br>
+            <input type="text" id="lastName" name="lastName"><br>
+            <label for="otherName">Other Name:</label><br>
+            <input type="text" id="otherName" name="otherName"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="phoneNumber">Phone Number:</label><br>
+            <input type="tel" id="phoneNumber" name="phoneNumber"><br>
+            <label for="gender">Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            <input type="submit" value="Submit">
+        </form>
+    `);
+});
+
+app.post('/submit', (req, res) => {
+    console.log(req.body);
+    res.send('Form submitted successfully!');
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
